@@ -34,19 +34,19 @@ public class TodoListController {
        return todoListService.buscarPeloId(id);
     }
 
-    @PostMapping
+    @PostMapping("/criar")
     public ResponseEntity<TodoList> criar(@Valid @RequestBody TodoList todoList){
         TodoList todoListSalvo = todoListService.salvar(todoList);
         return ResponseEntity.status(HttpStatus.CREATED).body(todoListSalvo);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/deletar{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void remover(@PathVariable TodoList id){
         todoListService.remover(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/atualizar{id}")
     public TodoList atualizar(@PathVariable Long id, @Valid @RequestBody TodoList todoList){
         return todoListService.atualizar(id, todoList);
     }
