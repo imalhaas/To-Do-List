@@ -40,13 +40,13 @@ public class TodoListController {
         return ResponseEntity.status(HttpStatus.CREATED).body(todoListSalvo);
     }
 
-    @DeleteMapping("/deletar{id}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void remover(@PathVariable TodoList id){
         todoListService.remover(id);
     }
 
-    @PutMapping("/atualizar{id}")
+    @PutMapping("/{id}")
     public TodoList atualizar(@PathVariable Long id, @Valid @RequestBody TodoList todoList){
         return todoListService.atualizar(id, todoList);
     }
